@@ -1,12 +1,11 @@
 package com.demo.SpringBootJPA.controller;
 
 import java.util.Optional;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,22 +27,22 @@ public class CategoryController {
 		
 		@Autowired
 	    private CategoryService categoryService;
-		
-		@Autowired
-		private CategoryRepository categoryRepository;
+
 
 //	    @GetMapping
 //	    public Page<Category> getAllCategories(Pageable pageable) {
 //	        return categoryService.getAllCategories(pageable);
 //	    }
 		
-//get categories with pagination (default size - 5)		
-		 @GetMapping
-		 public PageResponse<Category> getAllCategories(@RequestParam(defaultValue="1")int page) {
-			 Page<Category> categoryPage = categoryRepository.findAll(PageRequest.of(page, 5));
-			 return new PageResponse<>(categoryPage.getContent(),categoryPage.getNumber());
-		 }
-		
+		@GetMapping
+	    public ResponseEntity<Page<Category>> getAllCategories(
+	            @RequestParam(defaultValue = "0") int page,
+	            @RequestParam(defaultValue = "5") int size) {
+
+	        		Pageable pageable = PageRequest.of(page, size);
+	        		return ResponseEntity.ok(categoryService.getAllCategories(pageable));
+	      		}
+	
 	    @GetMapping("/{id}")
 	    public Optional<Category> getCategoryById(@PathVariable Long id) {
 	        return categoryService.getCategoryById(id);

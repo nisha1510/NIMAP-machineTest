@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.demo.SpringBootJPA.Entity.Category;
@@ -16,13 +18,13 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-//	public Page<Category> getAllCategories(Pageable pageable) {
-//		return categoryRepository.findAll(pageable);
-//	}
-	
-	public List<Category> getAllCategories(){
-		return categoryRepository.findAll();
+	public Page<Category> getAllCategories(Pageable pageable) {
+		return categoryRepository.findAll(pageable);
 	}
+	
+//	public List<Category> getAllCategories(){
+//		return categoryRepository.findAll();
+//	}
 
     public Optional<Category> getCategoryById(Long id) {
     	return categoryRepository.findById(id);

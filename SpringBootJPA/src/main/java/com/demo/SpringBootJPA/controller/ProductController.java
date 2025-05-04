@@ -33,11 +33,6 @@ public class ProductController {
 	@Autowired
     private ProductService productService;
 	
-	@Autowired
-	private CategoryRepository categoryRepository;
-	
-	@Autowired
-	private ProductRepository productRepository;
 
 //    @GetMapping
 //    public Page<Product> getAllProducts(Pageable pageable) {
@@ -46,15 +41,13 @@ public class ProductController {
 	
 	
 	@GetMapping
-	public ResponseEntity<Page<Product>> getAllProducts(
-	        @RequestParam(defaultValue = "0") int page,
-	        @RequestParam(defaultValue = "5") int size){
+    public ResponseEntity<Page<Product>> getAllProducts(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
 
-	        Pageable pageable = PageRequest.of(page, size);
-	    Page<Product> productPage = productRepository.findAll(pageable);
-	    return ResponseEntity.ok(productPage);
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(productService.getAllProducts(pageable));
 	}
-
 
     @GetMapping("/{id}")
     public Optional<Product> getProductById(@PathVariable Long id) {

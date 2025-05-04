@@ -15,13 +15,13 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-//    public Page<Product> getAllProducts(Pageable pageable) {
-//        return productRepository.findAll(pageable);
-//    }
-   
-    public Page<Product> getAllProducts(int page, int size) {
-        return productRepository.findAll(PageRequest.of(page, size));
+    public Page<Product> getAllProducts(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
+   
+//    public Page<Product> getAllProducts(int page, int size) {
+//        return productRepository.findAll(PageRequest.of(page, size));
+//    }
 
     public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
