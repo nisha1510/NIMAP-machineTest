@@ -9,6 +9,6 @@ class SpringBootJpaApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
+
 
