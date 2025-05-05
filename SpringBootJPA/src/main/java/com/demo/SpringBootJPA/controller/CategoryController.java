@@ -25,6 +25,7 @@ import com.demo.SpringBootJPA.service.CategoryService;
 @RequestMapping("/api/categories")
 public class CategoryController {
 		
+	
 		@Autowired
 	    private CategoryService categoryService;
 
