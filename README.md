@@ -1,4 +1,4 @@
-SpringBootCRUD
+SpringBootCRUD - 
 Product-Category
 Overview ->
 This project implements a Product-Category CRUD Application using Spring Boot, JPA/Hibernate, and MySQL. It provides APIs to manage categories and products with a one-to-many relationship, server-side pagination, and category details included in the product response.
