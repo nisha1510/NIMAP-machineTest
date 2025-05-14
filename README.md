@@ -25,7 +25,7 @@ Spring Boot Starter Validation
 
 Setup Instructions :->
 1. Set Up MySQL Database:
-Create a MySQL database (e.g., product_category_db) using a MySQL client or command line.
+Create a MySQL database (e.g., crud_db) using a MySQL client or command line.
 
 Ensure that your MySQL server is running and you have the necessary permissions to create databases and tables.
 
